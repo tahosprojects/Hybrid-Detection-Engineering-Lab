@@ -4,7 +4,7 @@ Cloud attack emulation and detection engineering in AWS. A Kali attacker detonat
 
 **Stack:** AWS (CloudTrail, S3, SQS) · Terraform · Splunk · Stratus Red Team · Sigma / sigma-cli · Python (boto3, requests) · Kali Linux
 
-**Full write-up:** [Hybrid_Threat_Detection_Writeup.pdf](Hybrid_Threat_Detection_Writeup.pdf) covers the architecture, design decisions, and detection logic in depth.
+**Full write-up:** [Hybrid_Threat_Detection_Lab.pdf](Hybrid_Threat_Detection_Lab.pdf) covers the architecture, design decisions, and detection logic in depth.
 
 ---
 
@@ -99,6 +99,10 @@ Detecting an event is only half the job. A Python script (boto3 and requests) ta
 - **Detect behavior, not identity.** The most dangerous cloud attacks run under legitimate credentials, so the strongest detections trigger on patterns of activity rather than on who is acting.
 - **Decouple ingestion with a queue.** An SQS queue and a dead-letter queue between S3 and Splunk mean log delivery survives an outage instead of silently dropping events.
 - **A missing tool can be a design choice.** Dropping GuardDuty for cost became a chance to demonstrate the detection logic directly rather than hide it behind a managed service.
+
+## Analyst Output
+
+- [INC-2026-002 Incident Response Report](INC-2026-002_AWS_Cloud_Kill_Chain_IR.md): full kill-chain timeline and NIST SP 800-61-aligned incident report covering all five simulated techniques, false-positive tuning, and MITRE ATT&CK coverage.
 
 ## What This Demonstrates
 
